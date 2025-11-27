@@ -12,6 +12,41 @@ html {
     margin: 0;
 }
 
+:root {
+    /* adjusted palette to match reference: dark chocolate + warm gold + cream */
+    /* softened/dimmed dark browns — made slightly lighter for better readability */
+    --bg-dark: #3b2f2b;
+    /* page background, a touch lighter */
+    --panel-mid: #4a352f;
+    /* mid tone for sections, slightly lifted */
+    --brown-medium: #7a5a48;
+    /* warmer medium brown */
+    --brown-dark: #42312a;
+    /* primary text brown — lighter than before */
+    --gold: #d4af37;
+    --gold-light: #f4d03f;
+    --gold-dark: #b8860b;
+    --cream: #f0e4d0;
+    /* softer cream for cards */
+    --shadow: rgba(0, 0, 0, 0.35);
+    /* brand frame tuning: horizontal extra and vertical extra (include px) */
+    --brand-frame-horiz: 64px;
+    --brand-frame-vert: 18px;
+
+    /* --navbar-top: rgba(47, 36, 32, 0.95);
+  --navbar-bottom: rgba(63, 50, 45, 0.9); */
+    --navbar-top: #3e3631;
+    --navbar-bottom: #413934;
+
+    --navright-top: rgba(58, 44, 34, 0.9);
+    --navright-bottom: rgba(72, 54, 40, 0.88);
+
+    --brand-plate-top: #352a26;
+    --brand-plate-bottom: #2a1f1c;
+    --brand-plate-border: #8a624f;
+}
+
+
 body {
     font-size: 14px;
     font-family: 'hywenhei';
@@ -48,16 +83,16 @@ nav {
 
 }
 
-.navcontent a:hover{
+.navcontent a:hover {
     transition: all 0.2s ease-in-out;
     transform: translateY(-1px);
     color: #d4af37;
-    
+
 }
 
-.navcontent .now{
+.navcontent .now {
     color: #d4af37;
-    
+
 }
 
 .logo {
@@ -106,12 +141,6 @@ section {
     padding: 2rem;
 }
 
-/* section .footer{
-    height: 30vh;
-    scroll-snap-align: start;
-
-} */
-
 
 /* infoooo */
 
@@ -155,6 +184,88 @@ section {
     margin: 2rem;
 }
 
+.cta-button {
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-weight: bold;
+
+}
+
+.cta-button.primary {
+    background-color: #d4af37;
+    color: #3b2f2b;
+    border: 3px solid #755807;
+    padding: 0.9rem 1.6rem;
+    font-weight: 800;
+    border-radius: 999px;
+}
+
+.cta-button.ghost {
+    background: transparent;
+    color: #83630d;
+    border: 3px solid #755807;
+    padding: 0.8rem 1.4rem;
+    border-radius: 999px;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+}
+
+.cta-button:active {
+    transform: translateY(-1px);
+}
+
+.cta-button {
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+    color: var(--brown-dark);
+    border: none;
+    padding: 1.2rem 3rem;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: inherit;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px var(--shadow), inset 0 2px 5px rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: 3px solid var(--brown-dark);
+}
+
+.cta-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.3),
+            transparent);
+    transition: left 0.5s;
+    display: none;
+}
+
+.cta-button:hover::before {
+    left: 100%;
+}
+
+.cta-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 25px var(--shadow),
+        inset 0 2px 5px rgba(255, 255, 255, 0.4);
+}
+
+.cta-button:active {
+    transform: scale(1);
+}
+
+
 .homebutton1 {
     background-color: #d4af37;
     font-size: 18px;
@@ -182,7 +293,6 @@ section {
 .gambar {
     max-width: 50%;
     margin: 1rem;
-    /* background-color: blue; */
 
 }
 
@@ -272,7 +382,7 @@ section {
     transition: all 0.2s ease-in-out;
 }
 
-.content-nav:active{
+.content-nav:active {
     transform: scale(1);
     transition: all 0.2s ease-in-out;
 }
@@ -302,10 +412,12 @@ section {
     width: 90%;
     height: 75%;
 }
-.section-title{
+
+.section-title {
     font-size: 32px;
 }
-.section-subtitle{
+
+.section-subtitle {
     color: #4A3516;
     font-size: 22px;
 }
@@ -410,7 +522,7 @@ section {
 
 .footer-text {
     font-size: 1.1rem;
-    
+
 }
 
 .footer-subtext {
@@ -475,7 +587,7 @@ section {
     margin-top: 8px;
 }
 
-.footer-credit{
+.footer-credit {
     color: #d4af37;
 }
 
@@ -485,7 +597,7 @@ section {
     body {
         font-size: 14px;
     }
-    
+
     .navcontent {
         display: none;
     }
