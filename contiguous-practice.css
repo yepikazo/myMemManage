@@ -1,0 +1,67 @@
+/* Page-specific overrides for contiguous practice page. Keep very small - most styling comes from contiguous.css */
+
+/* Ensure the main page container uses the same contiguous styles - no overrides required here */
+/* keep this file to add page-specific tweaks later */
+
+.panel .panel-body {
+  margin-top: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 14px;
+  border-radius: 8px;
+  color: var(--brown-medium);
+}
+
+/* make sure lead paragraph has readable width on practice page */
+.contiguous-page .lead {
+  margin-bottom: 18px;
+}
+
+@media (max-width: 720px) {
+  .contiguous-page {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+/* Practice-specific styles */
+.practice-controls input[type="number"] {
+  width: 68px;
+  padding: 6px 8px;
+  margin-right: 6px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+#practice-processes-list .proc-item {
+  background: rgba(255, 255, 255, 0.06);
+  padding: 10px 12px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.proc-item.current {
+  outline: 2px solid rgba(212, 175, 55, 0.25);
+}
+.partition-occupied {
+  opacity: 0.6;
+}
+
+.occ-p {
+  text-decoration: line-through;
+  color: rgba(0, 0, 0, 0.75);
+  padding-right: 2px;
+}
+.occ-num {
+  color: inherit;
+}
+
+.cta-button.ghost {
+  margin-left: 8px;
+}
+
+.disabled {
+  opacity: 0.45;
+  pointer-events: none;
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Latihan Contiguous - myMemManage</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="contiguous.css" />
+  <!-- page specific overrides / small tidy styles -->
+  <link rel="stylesheet" href="contiguous-practice.css" />
+</head>
+
+<body>
+  <!-- Navbar (copied structure to match other pages) -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-left">
+        <a href="index.html#beranda" class="brand" aria-label="myMemManage">
+          <img src="img/logo.png" alt="myMemManage" class="nav-logo" />
+        </a>
+      </div>
+      <div class="nav-right">
+        <a href="index.html#beranda" class="nav-link">Home</a>
+        <img src="img/staricon.png" alt="" class="nav-sep" aria-hidden="true" />
+        <a href="contiguous.html" class="nav-link">Contiguous</a>
+        <img src="img/staricon.png" alt="" class="nav-sep" aria-hidden="true" />
+        <a href="noncontiguous.html" class="nav-link">Non-Contiguous</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="contiguous-page">
+    <h1>Latihan Contiguous Memory</h1>
+    <p class="lead">Halaman materi untuk teknik alokasi memori contiguous. Materi ini berisi pengertian umum,
+      pembahasan algoritma (First-Fit, Best-Fit, Worst-Fit) dan sebuah visualisasi langkah-demi-langkah menggunakan
+      algoritma First-Fit berdasarkan contoh referensi.</p>
+
+    <!-- Practice panels: generator + solver -->
+    <section class="panel" id="practice-generate-panel">
+      <h2>Buat Soal Latihan</h2>
+      <p class="warna-font">Tekan tombol <strong>Generate Soal</strong> untuk membuat soal latihan acak. Soal akan
+        menghasilkan jumlah dan ukuran proses serta jumlah dan ukuran partisi, sekaligus memilih algoritma
+        (First/Best/Worst).</p>
+
+      <div class="panel-body practice-controls">
+        <label for="gen-process-count" class="warna-font">Jumlah Proses</label>
+        <input id="gen-process-count" class="warna-materi" type="number" min="2" max="20" value="4" />
+
+        <label for="gen-partition-count" class="warna-font" style="margin-left:12px;">Jumlah Partisi</label>
+        <input id="gen-partition-count" class="warna-materi" type="number" min="2" max="20" value="5" />
+
+        <button id="generate-problem" class="cta-button">Generate Soal</button>
+        <!-- <button id="reset-problem" class="cta-button ghost">Reset</button> -->
+
+        <div id="generated-algo" style="margin-top:12px; font-weight:700;">Algoritma: <span id="gen-algo-name">-</span>
+        </div>
+
+        <div id="generated-summary" style="margin-top:12px;">
+          <div id="gen-processes" style="margin-top:8px;"></div>
+          <div id="gen-partitions" style="margin-top:8px;"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="practice-solve-panel">
+      <h2>Kerjakan Latihan</h2>
+      <p class="warna-font">Letakkan proses sesuai algoritma yang ditentukan. Klik tombol <strong>Generate Soal</strong>
+        terlebih dahulu. Proses harus ditempatkan dalam urutan yang diberikan (p1 → p2 → ...). Jika Anda mencoba
+        menempatkan pada partisi yang tidak sesuai dengan algoritma, sistem akan menolak dan menampilkan pesan.</p>
+
+      <div class="panel-body">
+        <div id="practice-area">
+          <div style="display:flex; gap:24px; flex-wrap:wrap;">
+            <div style="flex:1; min-width:320px;">
+              <h4>Partisi</h4>
+              <table class="alloc-table">
+                <thead>
+                  <tr>
+                    <th>Partisi</th>
+                    <th>Ukuran (Kb)</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="practice-partitions-tbody"></tbody>
+              </table>
+            </div>
+
+            <div style="width:360px;">
+              <h4>Proses (urutan)</h4>
+              <div id="practice-processes-list" style="display:flex; flex-direction:column; gap:8px;"></div>
+
+              <div id="practice-message" style="margin-top:12px; color:var(--brown-dark); font-weight:700;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer (same markup as other pages) -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="container footer-inner">
+        <p class="footer-credit">Dibuat oleh Mahasiswa Informatika 2025 Universitas Siliwangi</p>
+
+        <p class="footer-copy small">Copyright © Siliwangi University. All Rights Reserved <br>Tasikmalaya,
+          Indonesia</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="contiguous.js"></script>
+  <script src="contiguous-practice.js"></script>
+</body>
+
+</html>

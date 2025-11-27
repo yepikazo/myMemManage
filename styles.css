@@ -1,0 +1,1305 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Custom font embedding: let browser load the font files from the local `fonts/` folder. */
+@font-face {
+  font-family: "HYWenHei-85W";
+  src: local("HYWenHei-85W"), url("fonts/HYWenHei-85W.woff2") format("woff2"),
+    url("fonts/HYWenHei-85W.woff") format("woff"),
+    url("fonts/HYWenHei-85W.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* adjusted palette to match reference: dark chocolate + warm gold + cream */
+  /* softened/dimmed dark browns — made slightly lighter for better readability */
+  --bg-dark: #3b2f2b; /* page background, a touch lighter */
+  --panel-mid: #4a352f; /* mid tone for sections, slightly lifted */
+  --brown-medium: #7a5a48; /* warmer medium brown */
+  --brown-dark: #42312a; /* primary text brown — lighter than before */
+  --gold: #d4af37;
+  --gold-light: #f4d03f;
+  --gold-dark: #b8860b;
+  --cream: #f0e4d0; /* softer cream for cards */
+  --shadow: rgba(0, 0, 0, 0.35);
+  /* brand frame tuning: horizontal extra and vertical extra (include px) */
+  --brand-frame-horiz: 64px;
+  --brand-frame-vert: 18px;
+
+  /* --navbar-top: rgba(47, 36, 32, 0.95);
+  --navbar-bottom: rgba(63, 50, 45, 0.9); */
+  --navbar-top: #3e3631;
+  --navbar-bottom: #413934;
+
+  --navright-top: rgba(58, 44, 34, 0.9);
+  --navright-bottom: rgba(72, 54, 40, 0.88);
+
+  --brand-plate-top: #352a26;
+  --brand-plate-bottom: #2a1f1c;
+  --brand-plate-border: #8a624f;
+}
+
+
+
+body {
+  font-family: "HYWenHei-85W", sans-serif;
+  /* add a subtle repeating diamond SVG tile on top, then radial highlight and diagonal textures */
+  background-color: var(--bg-dark);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><polygon points='20,0 40,20 20,40 0,20' fill='%233F322D' opacity='0.04'/></svg>"),
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(212, 175, 55, 0.02) 0,
+      transparent 30%
+    ),
+    linear-gradient(45deg, rgba(255, 255, 255, 0.01) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(255, 255, 255, 0.01) 25%, transparent 25%);
+  background-size: 40px 40px, cover, 40px 40px, 40px 40px;
+  background-repeat: repeat, no-repeat, repeat, repeat;
+  color: var(--brown-dark);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Navbar Styles */
+nav {
+    background-color: #3b2f2b;
+    height: 5rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: #644e1f solid;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+}
+
+.navcontent {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.navcontent a {
+    text-decoration: none;
+    color: #f0e4d0;
+    margin: 0 1rem;
+    font-size: 16px;
+    transition: all 0.2s ease-in-out;
+
+}
+
+.navcontent a:hover{
+    transition: all 0.2s ease-in-out;
+    transform: translateY(-1px);
+    color: #d4af37;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.navcontent .now{
+        color: #d4af37;
+
+    /* text-decoration: underline; */
+    font-weight: bolder;
+}
+/* Banner Section */
+.banner {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 4rem 2rem;
+  overflow: hidden;
+}
+
+.banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* dark overlay to improve contrast for banner text + decorative radial highlights */
+  /* slightly lighter overlay so gold/cream text reads better */
+  background: linear-gradient(rgba(141, 92, 1, 0.35), rgba(16, 12, 10, 0.35));
+  pointer-events: none;
+  z-index: 1;
+}
+
+.banner-content {
+  text-align: center;
+  z-index: 2;
+  position: relative;
+  max-width: 900px;
+}
+
+.banner-shapes {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.shape {
+  position: absolute;
+  border: 3px solid var(--gold);
+  opacity: 0.2;
+  animation: float 6s ease-in-out infinite;
+}
+
+.shape-2 {
+  width: 150px;
+  height: 150px;
+  top: 60%;
+  right: 15%;
+  border-radius: 50%;
+  animation-delay: 2s;
+}
+
+.shape-3 {
+  width: 180px;
+  height: 180px;
+  bottom: 15%;
+  left: 20%;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation-delay: 4s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+.logo-container {
+  margin-bottom: 2rem;
+}
+
+.logo-circle {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 1.5rem;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.6),
+    inset 0 0 20px rgba(255, 255, 255, 0.3);
+  border: 5px solid var(--brown-dark);
+  position: relative;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+/* Navbar logo image (uploaded by user: img/logo.png) */
+.nav-left .brand .nav-logo {
+  height: 50px; /* keep same size as before */
+  width: auto;
+  display: block;
+  object-fit: contain;
+  border-radius: 0; /* plain image, no rounding */
+  background: transparent; /* preserve PNG alpha */
+  background-color: transparent;
+  /* remove any decorative effects so logo is plain */
+  box-shadow: none;
+  filter: none;
+}
+
+.nav-left .brand:hover {
+  /* keep hover neutral so the logo doesn't gain extra decorative plates */
+  box-shadow: none;
+  transform: none;
+}
+
+/* Hide any leftover .brand-text inside navbar if present */
+.nav-left .brand .brand-text {
+  display: none;
+}
+
+/* remove previous ornamental frame pseudo-elements; the pill look is handled by .brand-text directly */
+.brand-text::before {
+  /* subtle inner decorative line to mimic the inset stroke seen in the reference */
+  content: "";
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  top: 4px;
+  bottom: 4px;
+  border-radius: 22px;
+  pointer-events: none;
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.06),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.12);
+  border: 2px solid rgba(255, 255, 255, 0.03);
+}
+
+.banner-title {
+  font-size: 4.5rem;
+  font-weight: 800;
+  color: var(--gold);
+  /* bright gold face with a subtle dark stroke and luminous glow */
+  -webkit-text-stroke: 1px rgba(46, 36, 32, 0.6);
+  text-shadow: 0 8px 20px rgba(0, 0, 0, 0.75), 0 2px 0 rgba(0, 0, 0, 0.6),
+    0 0 20px rgba(212, 175, 55, 0.25);
+  margin-bottom: 1rem;
+  letter-spacing: 3px;
+}
+
+.greeting-text {
+  font-size: 2rem;
+  color: rgba(240, 228, 208, 0.96); /* near-cream for readability */
+  margin-bottom: 1rem;
+  font-weight: 700;
+  text-shadow: 0 6px 14px rgba(0, 0, 0, 0.65), 0 0 10px rgba(212, 175, 55, 0.06);
+}
+
+.banner-description {
+  font-size: 1.3rem;
+  color: rgba(240, 228, 208, 0.88); /* softened cream for body copy */
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
+}
+
+.cta-button {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+  color: var(--brown-dark);
+  border: none;
+  padding: 1.2rem 3rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  font-family: inherit;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px var(--shadow), inset 0 2px 5px rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: 3px solid var(--brown-dark);
+}
+
+.cta-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.cta-button:hover::before {
+  left: 100%;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px var(--shadow),
+    inset 0 2px 5px rgba(255, 255, 255, 0.4);
+}
+
+.cta-button:active {
+  transform: translateY(-1px);
+}
+
+.button-text {
+  margin-right: 10px;
+}
+
+.button-shield {
+  font-size: 1.5rem;
+}
+
+/* --- Reworked Banner Styles (override earlier banner rules) --- */
+.banner {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 3.5rem 2rem 6rem 2rem;
+  overflow: visible;
+  background: linear-gradient(
+    180deg,
+    rgba(16, 12, 10, 0.14),
+    rgba(16, 12, 10, 0.22)
+  );
+}
+
+.banner-inner {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  z-index: 3;
+}
+
+.banner-left {
+  flex: 1 1 520px;
+  color: var(--cream);
+  text-align: left;
+  padding: 2rem 1rem;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(212, 175, 55, 0.12);
+  color: var(--gold);
+  border: 2px solid rgba(212, 175, 55, 0.26);
+  padding: 0.35rem 0.9rem;
+  border-radius: 20px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  /* reduced gap to title for tighter grouping */
+  margin-bottom: 0.55rem;
+}
+
+.banner-title {
+  font-size: 3.4rem;
+  line-height: 1.02;
+  /* reduce top margin so badge and title sit closer together, and increase gap to subtitle */
+  margin: 0.45rem 0 1rem 0;
+  color: var(--cream);
+  text-shadow: 0 8px 20px rgba(0, 0, 0, 0.6), 0 0 12px rgba(212, 175, 55, 0.08);
+  -webkit-text-stroke: 0.6px rgba(46, 36, 32, 0.6);
+}
+
+.banner-subtitle {
+  font-size: 1.15rem;
+  color: rgba(240, 228, 208, 0.9);
+  /* ensure comfortable spacing below title */
+  margin: 0.9rem 0 1.6rem 0;
+  max-width: 620px;
+}
+
+.banner-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+
+.cta-button.primary {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+  color: var(--brown-dark);
+  border: 3px solid var(--brown-dark);
+  padding: 0.9rem 1.6rem;
+  font-weight: 800;
+  border-radius: 999px;
+}
+
+.cta-button.ghost {
+  background: transparent;
+  color: #83630d;
+  border: 3px solid #755807;
+  padding: 0.8rem 1.4rem;
+  border-radius: 999px;
+}
+
+.banner-right {
+  flex: 1 1 560px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 0 1rem;
+}
+
+.banner-illustration {
+  width: 100%;
+  max-width: 780px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  transform: translateX(6%);
+  filter: drop-shadow(0 18px 26px rgba(0, 0, 0, 0.6));
+}
+
+.banner-ribbon {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2rem;
+  height: 110px;
+  background: linear-gradient(
+    90deg,
+    rgba(212, 175, 55, 0.95),
+    rgba(196, 144, 56, 0.9)
+  );
+  clip-path: polygon(0 10%, 100% 0%, 100% 70%, 0% 100%);
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  opacity: 0.95;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(4deg);
+  }
+}
+
+/* keep CTA base class behaviors */
+.cta-button {
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.cta-button:hover {
+  transform: translateY(-3px);
+}
+.cta-button:active {
+  transform: translateY(-1px);
+}
+
+/* Responsive tweaks for the new banner */
+@media (max-width: 900px) {
+  .banner-inner {
+    flex-direction: column-reverse;
+    gap: 1.2rem;
+  }
+  .banner-left {
+    text-align: center;
+    padding: 1rem;
+  }
+  .banner-right {
+    width: 100%;
+  }
+  .banner-title {
+    font-size: 2.4rem;
+  }
+  .banner-subtitle {
+    font-size: 1rem;
+  }
+  .banner-ribbon {
+    display: none;
+  }
+}
+
+/* End reworked banner CSS */
+
+/* Preview Section */
+.preview-section {
+  /* padding: 6rem 2rem; */
+  background: linear-gradient(180deg, #e8d5b7 0%, #e5ba8c 100%);
+  /* position: relative; */
+}
+
+.preview-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(139, 111, 71, 0.1) 100%
+  );
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  margin-top: 4rem;
+}
+
+.section-title {
+  font-size: 3.5rem;
+  text-align: center;
+  color: var(--brown-dark);
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 0 var(--gold), 4px 4px 8px var(--shadow);
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.section-title::before,
+.section-title::after {
+  /* replace decorative sword glyph with the uploaded star icon image */
+  content: "";
+  display: inline-block;
+  width: 44px;
+  height: 44px;
+  margin: 0 2rem;
+  vertical-align: middle;
+  background-image: url("img/staricon.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.95;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 1.3rem;
+  color: var(--brown-medium);
+  margin-bottom: 4rem;
+}
+
+.materials-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+.material-card {
+  background: linear-gradient(180deg, var(--cream) 0%, #efe2c8 100%);
+  border: 3px solid rgba(75, 55, 45, 0.12);
+  border-radius: 18px;
+  padding: 2.2rem 2rem;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(10, 8, 6, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  overflow: hidden;
+}
+
+.material-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(212, 175, 55, 0.1) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.material-card:hover::before {
+  opacity: 1;
+}
+
+.material-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(10, 8, 6, 0.65),
+    0 0 30px rgba(212, 175, 55, 0.08);
+  border-color: rgba(212, 175, 55, 0.12);
+}
+
+.card-decoration {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.3;
+  animation: float 4s ease-in-out infinite;
+}
+
+.card-top-left {
+  top: 15px;
+  left: 15px;
+  animation-delay: 0s;
+}
+
+.card-top-right {
+  top: 15px;
+  right: 15px;
+  animation-delay: 1s;
+}
+
+.card-bottom-left {
+  bottom: 15px;
+  left: 15px;
+  animation-delay: 2s;
+}
+
+.card-bottom-right {
+  bottom: 15px;
+  right: 15px;
+  animation-delay: 3s;
+}
+
+.material-icon {
+  font-size: 5rem;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(2px 2px 4px var(--shadow));
+}
+
+.material-title {
+  font-size: 2.5rem;
+  color: var(--brown-dark);
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.material-description {
+  font-size: 1.1rem;
+  color: var(--brown-medium);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  min-height: 80px;
+}
+
+.material-features {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.feature-tag {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+  color: var(--brown-dark);
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 2px solid var(--brown-dark);
+  box-shadow: 0 3px 8px var(--shadow);
+}
+
+.material-button {
+  background: linear-gradient(
+    135deg,
+    var(--brown-medium) 0%,
+    var(--brown-dark) 100%
+  );
+  color: var(--gold-light);
+  border: 3px solid var(--gold);
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: inherit;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 5px 15px var(--shadow);
+  position: relative;
+  z-index: 1;
+}
+
+.material-button:hover {
+  background: linear-gradient(
+    135deg,
+    var(--brown-dark) 0%,
+    var(--brown-medium) 100%
+  );
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px var(--shadow);
+  border-color: var(--gold-light);
+}
+
+.material-button:active {
+  transform: translateY(-1px);
+}
+
+/* About Section */
+.about-section {
+  padding: 4rem 2rem;
+  /* background: linear-gradient(180deg, #d4a574 0%,  #bd9436 50%, #c9a961 100%); */
+  background: linear-gradient(180deg, #e5ba8c 0%, #e8d5b7 27%, #e5ba8c 100%);
+  position: relative;
+}
+
+/* New about container using uploaded artwork as background */
+.about-container {
+  margin: 0 auto;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding-top: 1rem;
+  margin-top: 5rem;
+  /* the visual artwork is now a real <img> (.about-art) inside this container */
+}
+
+/* artwork element (PNG) - use drop-shadow so the shadow follows the PNG alpha channel */
+.about-art {
+  align-items: center;
+  justify-content: center;
+  /* display: block; */
+  width: 100rem;
+  height: 35rem;
+  margin-top: 12rem;
+  border-radius: 28px;
+  -webkit-filter: drop-shadow(0 26px 36px rgba(0, 0, 0, 0.38));
+  filter: drop-shadow(0 26px 36px rgba(0, 0, 0, 0.38));
+}
+
+/* .about-inner overlays the content on top of the artwork */
+.about-inner {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 3.2rem 2.4rem 4.2rem 2.4rem;
+  pointer-events: none; /* so clicks pass through to any interactive parts if needed; override for children */
+}
+
+.about-inner * {
+  pointer-events: auto;
+}
+
+.developers-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 3rem;
+  margin-top: 7rem;
+}
+
+.developer-card {
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.developer-card:hover {
+  transform: translateY(-10px);
+}
+
+.developer-avatar {
+  position: relative;
+  width: 160px;
+  height: 250px; /* vertical frame height to match decorative border */
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.developer-avatar img {
+  /* the member photo sits inside the decorative frame; size it to fit inside the carved area */
+  width: 78%;
+  height: 72%;
+  object-fit: cover;
+  display: block;
+  border-radius: 6px;
+}
+
+.developer-card:hover .developer-avatar img {
+  box-shadow: 0 12px 30px rgba(212, 175, 55, 0.6);
+  transform: scale(1.03);
+}
+
+.avatar-frame {
+  /* use the uploaded decorative border for each developer card */
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("img/borderabout.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  pointer-events: none;
+  opacity: 0.95;
+}
+
+.developer-card:hover .avatar-frame {
+  opacity: 1;
+}
+
+.developer-name {
+  font-size: 1.1rem;
+  color: var(--brown-dark);
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+.footer {
+  background: linear-gradient(180deg, var(--brown-dark) 0%, #5a3e2e 100%);
+  padding: 3rem 2rem;
+  text-align: center;
+  position: relative;
+  border-top: 3px solid var(--gold);
+}
+.footer-text {
+  color: var(--gold-light);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px var(--shadow);
+}
+
+.footer-subtext {
+  color: var(--cream);
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+.footer {
+  /* theme-aware dark footer */
+  background: linear-gradient(
+    180deg,
+    var(--brown-dark, #0f0c0a),
+    rgba(10, 8, 6, 0.98)
+  );
+  color: var(--cream, #f6efe6);
+  padding: 48px 0 36px;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.footer-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 18px;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.footer-nav a {
+  color: var(--cream, #f6efe6);
+  opacity: 0.86;
+  font-size: 0.92rem;
+  text-decoration: none;
+  transition: color 0.15s ease, opacity 0.15s ease;
+}
+
+.footer-nav a:hover {
+  color: var(--gold, #d4af37);
+  opacity: 1;
+}
+
+.footer-logo-wrap {
+  margin: 6px 0 12px;
+}
+
+.footer-logo {
+  width: 160px;
+  height: auto;
+  display: inline-block;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.6)) saturate(120%);
+}
+
+.footer-copy {
+  color: var(--cream, #f6efe6);
+  opacity: 0.72;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  margin: 8px auto 0;
+  max-width: 900px;
+}
+
+.footer-copy.small {
+  font-size: 0.78rem;
+  opacity: 0.56;
+  margin-top: 8px;
+}
+
+@media (max-width: 720px) {
+  .footer-nav {
+    gap: 14px;
+  }
+  .footer-logo {
+    width: 110px;
+  }
+  .footer-copy {
+    font-size: 0.82rem;
+  }
+}
+
+/* Footer credits list (names + NPM) */
+.credits-wrap .footer-title {
+  font-size: 1.05rem;
+  color: var(--cream, #f6efe6);
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.credits-list {
+  list-style: none;
+  padding: 0;
+  margin: 8px auto 14px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(160px, 1fr));
+  gap: 8px 18px;
+  justify-items: start;
+  align-items: center;
+  width: min(720px, 100%);
+}
+
+.credits-list li {
+  color: var(--cream, #f6efe6);
+  opacity: 0.9;
+  padding: 6px 10px;
+  font-size: 0.9rem; /* reduced overall */
+  border-radius: 6px;
+}
+
+@media (max-width: 520px) {
+  .credits-list {
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    gap: 6px 10px;
+  }
+  .credits-list li {
+    font-size: 0.82rem;
+    padding: 6px 8px;
+  }
+}
+
+/* footer note lines */
+.footer-note {
+  color: var(--cream, #f6efe6);
+  opacity: 0.88;
+  font-size: 0.95rem;
+  margin: 6px 0 2px;
+}
+
+/* reduce footer copy sizes a bit for compactness */
+.footer-copy {
+  font-size: 0.82rem;
+}
+.footer-copy.small {
+  font-size: 0.72rem;
+}
+
+/* single-line footer credit */
+.footer-credit {
+  color: var(--cream, #f6efe6);
+  opacity: 0.95;
+  font-size: 0.95rem;
+  margin: 0 0 10px 0;
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .developers-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .materials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .developers-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .banner-title {
+    font-size: 4.5rem;
+    font-weight: 800;
+    color: var(--gold);
+    /* stronger gold text with dark outline + glow to match reference */
+    -webkit-text-stroke: 1px rgba(46, 36, 32, 0.6);
+    text-shadow: 0 6px 14px rgba(0, 0, 0, 0.75), 0 2px 0 rgba(0, 0, 0, 0.6),
+      0 0 14px rgba(212, 175, 55, 0.18);
+    margin-bottom: 1rem;
+    letter-spacing: 3px;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+/* --- Content Preview / Isi Interaktif (baru) --- */
+.content-section {
+  padding: 3.5rem 2rem 6rem 2rem;
+  position: relative;
+}
+
+.content-panel {
+  max-width: 1200px;
+  margin: 2rem auto 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  justify-content: center;
+}
+
+.content-nav {
+  background: transparent;
+  border: transparent;
+  color: transparent;
+  width: 56px;
+  height: 96px;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+}
+
+/* Icon image inside nav buttons */
+.content-nav .nav-icon {
+  width: 11rem;
+  height: 11rem;
+  display: block;
+  object-fit: contain;
+  /* make sure the icon is crisp against the button background */
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
+}
+
+/* rotate the prev icon 180deg so the same image can be reused */
+.content-nav.prev .nav-icon {
+  transform: rotate(180deg);
+}
+
+/* slightly reduce glyph/button padding so the icon sits centered visually */
+.content-nav {
+  padding: 6px;
+}
+
+.content-nav.prev {
+  left: -28px;
+}
+.content-nav.next {
+  right: -28px;
+}
+
+.content-nav:hover {
+  transform: translateY(-52%);
+}
+
+.content-frame {
+  flex: 1 1 auto;
+  position: relative;
+  width: 100%;
+}
+
+.content-card {
+  /* container that uses the uploaded image as a background; content flows inside */
+  position: relative;
+  display: block;
+  /* padding: 3.2rem 3.2rem 4.2rem 3.2rem; */
+  /* margin: 0 auto; */
+  width: 130%;
+  height: 35rem;
+  /* max-width: 1100px; */
+  background-repeat: no-repeat;
+  /* keep the frame's aspect ratio: stretch horizontally, auto height */
+  background-position: center top;
+  background-size: 80% 100%;
+  background-image: url("img/kontenisi.png");
+  align-items: center;
+  justify-self: center;
+  /* content inside will be positioned absolutely (inset) to match the frame area */
+}
+
+.content-body {
+  position: relative;
+  z-index: 2;
+}
+
+.content-title {
+  font-size: 2.35rem;
+  margin: 0 0 0.6rem 0;
+  color: var(--brown-dark);
+}
+
+.content-title {
+  font-size: 2.35rem;
+  color: var(--brown-dark);
+  margin-bottom: 0.8rem;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.content-desc {
+  color: var(--brown-medium);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 1.6rem;
+  /* margin-left: 2rem;
+  margin-right: 2rem; */
+  max-width: 90%;
+}
+
+.content-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.page-indicator {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  font-size: 0.95rem;
+  color: rgba(60, 40, 30, 0.85);
+  z-index: 6;
+}
+
+@media (max-width: 900px) {
+  .content-panel {
+    flex-direction: column;
+  }
+  .content-nav {
+    display: none;
+  }
+  .content-card {
+    padding: 2rem;
+    border-radius: 18px;
+    min-height: 240px;
+  }
+  .content-title {
+    font-size: 1.6rem;
+  }
+  .content-desc {
+    font-size: 0.98rem;
+  }
+}
+
+/* --- Segmented / Choice-style navbar override (image-backed capsule) --- */
+/* Use the user-supplied image `img/navbaroption.png` as the capsule background
+   and let the inner links size themselves to match. Keep a color fallback. */
+.nav-right {
+  background-image: url("img/navbaroption.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  /* stretch the image to fill the container so it always covers the links */
+  background-size: 100% 100%;
+  /* fallback color if image fails to load */
+  /* background-color: #b8860b; */
+  padding: 8px 28px; /* slightly increased padding so links fit inside the stretched image */
+  border-radius: 28px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.nav-right .nav-link {
+  background: transparent; /* links sit on top of the image */
+  color: var(--brown-medium); /* agak gelap seperti diminta */
+  padding: 0.5rem 1.15rem; /* tuned to fit the visual height of the image */
+  border-radius: 18px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: none;
+  box-shadow: none;
+  transition: color 0.18s ease, transform 0.12s ease;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav-right .nav-link::after {
+  display: none;
+} /* remove underline in segmented style */
+
+.nav-right .nav-link:hover {
+  color: var(--gold-light);
+  transform: translateY(-1px);
+}
+
+.nav-right .nav-link.active {
+  color: var(--gold);
+  /* remove text shadow so 'Home' appears plain */
+  text-shadow: none;
+}
+
+/* Star separators are implemented as real elements (.nav-sep) inside .nav-right
+   instead of pseudo-elements. This gives more precise control with flex gap. */
+.nav-sep {
+  /* make the nav-right fully transparent and remove any image/background */
+  background: transparent;
+  background-image: none;
+  background-color: transparent;
+  width: 18px;
+  /* ensure no box-shadow so the capsule highlight disappears */
+  box-shadow: none;
+}
+
+/* inner decorative stroke (subtle gold line near the top inside the capsule) */
+.nav-right::before {
+  /* keep a very subtle inner highlight to match the image shading (non-intrusive) */
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 28px;
+  pointer-events: none;
+  /* remove the inset shadow/highlight so .nav-right appears flat/transparent */
+  box-shadow: none;
+}
+
+/* make this responsive so the segmented bar compresses on small screens */
+@media (max-width: 768px) {
+  .nav-right {
+    gap: 0.5rem;
+    padding: 4px;
+  }
+  .nav-right .nav-link {
+    padding: 0.35rem 0.8rem;
+    font-size: 0.95rem;
+  }
+  .nav-right .nav-link.active {
+    padding: 0.4rem 0.95rem;
+  }
+}
+
+.content-body {
+  /* place the content inside the decorative frame by insetting from the image edges
+    Use the design variables defined in :root so adjustments are easy. */
+  position: absolute;
+  top: var(--brand-frame-vert);
+  left: var(--brand-frame-horiz);
+  right: var(--brand-frame-horiz);
+  /* leave bottom inset so multi-line content doesn't overflow the frame */
+  bottom: var(--brand-frame-vert);
+  z-index: 2;
+
+  /* make it a vertical flex container so align-items / justify-content work
+    (e.g. center vertically, or use flex-start to align near the top header area). */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* change to center if you want vertical centering */
+  align-items: center;
+
+  /* remove the dark background and fixed height so the frame image shows through.
+    If you prefer a subtle overlay, use rgba() with low alpha here. */
+  background: transparent;
+  color: var(--cream);
+  padding: 1rem 1.5rem; /* internal spacing inside the inset area */
+  overflow: hidden;
+  /* background-color: #42312a; */
+  margin: 0 13rem;
+  gap: 3rem;
+}

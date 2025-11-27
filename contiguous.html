@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contiguous Memory - myMemManage</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="contiguous.css">
+</head>
+
+<body>
+  <!-- Navbar (keadaan dan markup mengikuti index.html) -->
+  <!-- <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-left">
+        <a href="index.html#beranda" class="brand" aria-label="myMemManage">
+          <img src="img/logo.png" alt="myMemManage" class="nav-logo" />
+        </a>
+      </div>
+      <div class="nav-right">
+        <a href="index - Copy.html" class="nav-link">Home</a>
+        <img src="img/staricon.png" alt="" class="nav-sep" aria-hidden="true" />
+        <a href="contiguous.html" class="nav-link active">Contiguous</a>
+        <img src="img/staricon.png" alt="" class="nav-sep" aria-hidden="true" />
+        <a href="noncontiguous.html" class="nav-link">Non-Contiguous</a>
+      </div>
+    </div>
+  </nav> -->
+  <nav>
+        <div class="logo">
+            <img src="img/logo.png" alt="">
+        </div>
+        <div class="navcontent">
+            <a href="index.html">home</a>
+            <a class="now" href="contiguous.html">contiguous memory</a>
+            <a href="noncontiguous.html">non-contiguous memory</a>
+        </div>
+    </nav>
+
+  <!-- Page content: Contiguous Memory material split into sections -->
+
+
+  <main class="contiguous-page">
+    <h1>Contiguous Memory Allocation</h1>
+    <p class="lead">Halaman materi untuk teknik alokasi memori contiguous. Materi ini berisi pengertian umum,
+      pembahasan algoritma (First-Fit, Best-Fit, Worst-Fit) dan sebuah visualisasi langkah-demi-langkah menggunakan
+      algoritma First-Fit berdasarkan contoh referensi.</p>
+
+    <section id="overview" class="panel">
+      <h2>Pengertian Umum</h2>
+      <p class="warna-font">Contiguous memory allocation adalah metode di mana setiap proses ditempatkan pada sebuah
+        blok memori fisik yang
+        berurutan. Kelebihan utama adalah kesederhanaan — penempatan dan penerjemahan alamat dapat dilakukan dengan
+        register <em>base</em> dan <em>limit</em>. Kelemahan utamanya adalah <strong>external fragmentation</strong>,
+        yaitu
+        munculnya banyak celah kecil yang tidak bisa dimanfaatkan oleh proses dengan ukuran tertentu.</p>
+    </section>
+
+    <section id="techniques" class="panel">
+      <h2>Teknik / Jenis Alokasi</h2>
+      <article>
+        <h3>First-Fit</h3>
+        <p class="warna-font">First-Fit mencari partisi kosong pertama yang cukup besar untuk menampung proses. Ia cepat
+          karena berhenti
+          pada
+          pencarian pertama yang cocok, tetapi tidak selalu menghasilkan penggunaan ruang paling efisien.</p>
+      </article>
+
+      <article>
+        <h3>Best-Fit</h3>
+        <p class="warna-font">Best-Fit mencari partisi terkecil yang masih dapat menampung proses (minimalkan sisa
+          ruang). Keuntungan:
+          mengurangi
+          sisa pemborosan untuk setiap alokasi. Kerugiannya: membutuhkan pencarian yang lebih lambat dan dapat
+          meningkatkan
+          fragmentasi kecil (banyak celah kecil).</p>
+      </article>
+
+      <article>
+        <h3>Worst-Fit</h3>
+        <p class="warna-font">Worst-Fit menempatkan proses pada partisi terbesar yang tersedia. Tujuannya adalah
+          menghindari pembentukan
+          banyak
+          fragmen kecil dengan memecah blok besar. Biasanya kurang efisien pada praktik tetapi kadang membantu pada
+          beban
+          tertentu.</p>
+      </article>
+    </section>
+
+    <!-- Visualization header panel -->
+    <section id="visualization" class="panel" style="display: flex; padding: 2rem 2rem 4rem 15rem;">
+      <h2>Simulasi: Langkah demi Langkah</h2>
+      <!-- <p class="warna-font">Contoh dataset (referensi):</p> -->
+    </section>
+
+    <!-- Processes table panel -->
+    <section class="panel processes-panel">
+      <h3>Daftar Proses</h3>
+      <div class="table-actions">
+        <div class="count-controls">
+          <label for="process-count" class="warna-font">Jumlah Proses</label>
+          <input class="warna-materi" id="process-count" type="number" min="2" max="20" value="6" />
+          <button class="warna-materi" id="set-process-count" class="small">Set</button>
+          <button class="warna-materi" id="random-processes" class="small">Random</button>
+          <span class="count-note" class="warna-font">(min 2 — max 20)</span>
+        </div>
+        <button class="warna-materi" id="add-process" class="small">Tambah Proses</button>
+        <button class="warna-materi" id="reset-processes" class="small">Reset Sample</button>
+      </div>
+      <table class="alloc-table" id="processes-table">
+        <thead>
+          <tr>
+            <th>Proses</th>
+            <th>Ukuran (Kb)</th>
+          </tr>
+        </thead>
+        <tbody id="processes-tbody">
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Initial partitions panel -->
+    <section class="panel partitions-panel">
+      <h3>Partisi Awal</h3>
+      <div class="table-actions">
+        <div class="count-controls">
+          <label for="partition-count" class="warna-font">Jumlah Partisi</label>
+          <input class="warna-materi" id="partition-count" type="number" min="2" max="20" value="6" />
+          <button class="warna-materi small" id="set-partition-count" class="small">Set</button>
+          <button class="warna-materi small" id="random-partitions" class="small">Random</button>
+          <span class="count-note" class="warna-font">(min 2 — max 20)</span>
+        </div>
+        <button class="warna-materi" id="add-partition" class="small">Tambah Partisi</button>
+        <button class="warna-materi" id="reset-partitions" class="small">Reset Sample</button>
+      </div>
+      <table class="alloc-table" id="partitions-table">
+        <thead>
+          <tr>
+            <th>Partisi</th>
+            <th>Ukuran (Kb)</th>
+          </tr>
+        </thead>
+        <tbody id="partitions-tbody">
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Partition state & controls panel (interactive) -->
+    <section class="panel partition-state-panel">
+      <h3>Status Partisi / Alokasi</h3>
+      <div id="viz-area">
+        <!-- Partition table rendered by JS -->
+        <div id="partition-container"></div>
+
+        <div class="controls">
+          <label for="algo-select" class="warna-font">Algorithm:</label>
+          <select id="algo-select" class="warna-materi warna-simpilihan">
+            <option value="first" class="warna-simpilihan">First-Fit</option>
+            <option value="best" class="warna-simpilihan">Best-Fit</option>
+            <option value="worst" class="warna-simpilihan">Worst-Fit</option>
+          </select>
+
+          <button id="prev-step">← PREV</button>
+          <button id="next-step">NEXT →</button>
+          <button id="run-all" class="gold">RUN ALL</button>
+          <button id="apply-data" class="small">TERAPKAN DATA</button>
+          <div class="step-indicator warna-font">Step: <span id="step-num">0</span> / <span id="step-total">0</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="explanation" class="panel">
+      <h2>Penjelasan Step</h2>
+      <div id="step-explanation">
+        <p class="warna-font">Tekan <strong>NEXT</strong> untuk melihat langkah alokasi proses berikutnya. Penjelasan akan muncul di sini,
+          menjelaskan mengapa proses ditempatkan pada partisi tertentu atau mengapa menunggu.</p>
+      </div>
+    </section>
+
+    <!-- Practice CTA panel -->
+    <section class="panel practice-panel">
+      <h2>Ayo Berlatih</h2>
+      <p class="warna-font">Sudah paham materinya? Coba latihan untuk menguji pemahaman Anda. Latihan akan memberikan
+        soal
+        dan evaluasi singkat untuk membantu menguatkan konsep alokasi kontigu.</p>
+      <div class="practice-cta" style="margin-top:12px;">
+        <button id="go-to-practice" class="cta-button" onclick="location.href='contiguous-practice.html'">MULAI
+          LATIHAN</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer (sama seperti di index) -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="container footer-inner">
+        <p class="footer-credit">Dibuat oleh Mahasiswa Informatika 2025 Universitas Siliwangi</p>
+
+        <p class="footer-copy small">Copyright © Siliwangi University. All Rights Reserved <br>Tasikmalaya, Indonesia
+        </p>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+  <script src="contiguous.js"></script>
+</body>
+
+</html>

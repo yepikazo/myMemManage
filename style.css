@@ -1,0 +1,498 @@
+@font-face {
+    font-family: "hywenhei";
+    src: url(fonts/HYWenHei-85W.ttf);
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+*,
+html {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-size: 14px;
+    font-family: 'hywenhei';
+}
+
+
+
+nav {
+    background-color: #3b2f2b;
+    font-family: 'hywenhei';
+    height: 2.8rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: #644e1f solid;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+}
+
+.navcontent {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.navcontent a {
+    text-decoration: none;
+    color: #f0e4d0;
+    margin: 0 1rem;
+    font-size: 16px;
+    transition: all 0.2s ease-in-out;
+
+}
+
+.navcontent a:hover{
+    transition: all 0.2s ease-in-out;
+    transform: translateY(-1px);
+    color: #d4af37;
+    
+}
+
+.navcontent .now{
+    color: #d4af37;
+    
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.scroller {
+    height: 100vh;
+    overflow-y: scroll;
+    position: relative;
+    scroll-snap-type: y mandatory;
+}
+
+.scroller::-webkit-scrollbar {
+    display: none;
+}
+
+section {
+    height: 100vh;
+    scroll-snap-align: start;
+}
+
+.s1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3b2f2b;
+    background-image: linear-gradient(to bottom, #4A3516, #3b2f2b);
+}
+
+.s2 {
+    background-image: linear-gradient(to bottom, #F0E4D0, #cca46b);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.about-section {
+    background-image: linear-gradient(to bottom, #cca46b, #F0E4D0);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+/* section .footer{
+    height: 30vh;
+    scroll-snap-align: start;
+
+} */
+
+
+/* infoooo */
+
+.badge {
+    display: inline-block;
+    background: rgba(212, 175, 55, 0.12);
+    color: #d4af37;
+    border: 2px solid rgba(212, 175, 55, 0.26);
+    padding: 0.35rem 0.9rem;
+    border-radius: 20px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 0.55rem;
+}
+
+.title {
+    font-size: 48px;
+    color: #f0e4d0;
+    margin-bottom: 0.55rem;
+
+}
+
+.homeDeskripsi {
+    color: #f0e4d0;
+}
+
+.informasi {
+    font-family: 'hywenhei';
+    padding: 5rem;
+    margin: 1rem;
+    max-width: 35%;
+    /* background-color: blue; */
+
+
+}
+
+.homeButton1 {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin: 2rem;
+}
+
+.homebutton1 {
+    background-color: #d4af37;
+    font-size: 18px;
+    padding: 1rem;
+    border-radius: 40px;
+    border: 3px #3b2f2b solid;
+    color: #3b2f2b;
+    font-weight: bold;
+}
+
+.homebutton2 {
+    border-style: none;
+    border: 3px #d4af37 solid;
+    background-color: #fff;
+    font-size: 18px;
+    padding: 1rem;
+    border-radius: 40px;
+    color: #d4af37;
+    font-family: 'hywenhei';
+    font-weight: bold;
+
+
+}
+
+.gambar {
+    max-width: 50%;
+    margin: 1rem;
+    /* background-color: blue; */
+
+}
+
+/* =======================home2===================================== */
+
+.h2border {
+    border: #A1815B 5px solid;
+    background-color: #D6C687;
+    border-radius: 3rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+    /* height: 70%; */
+}
+
+.h2title {
+    font-size: 32px;
+    margin-bottom: 1rem;
+}
+
+.h2deskripsi {
+    color: #4A3516;
+    width: 80%;
+    text-align: justify;
+    font-size: 22px;
+}
+
+.h2button {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+.h2button a {
+    text-decoration: none;
+
+}
+
+.content-nav {
+    background-color: #fff;
+    width: 56px;
+    height: 96px;
+    border-radius: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    z-index: 5;
+}
+
+/* Icon image inside nav buttons */
+.content-nav .nav-icon {
+    width: 11rem;
+    height: 11rem;
+    display: block;
+    /* background-color: #fff; */
+
+    /* object-fit: contain; */
+    /* make sure the icon is crisp against the button background */
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
+}
+
+/* rotate the prev icon 180deg so the same image can be reused */
+.content-nav.prev .nav-icon {
+    transform: rotate(180deg);
+}
+
+/* slightly reduce glyph/button padding so the icon sits centered visually */
+.content-nav {
+    padding: 6px;
+}
+
+.content-nav.prev {
+    left: -28px;
+}
+
+.content-nav.next {
+    right: -28px;
+}
+
+.content-nav:hover {
+    transform: scale(1.1);
+    transition: all 0.2s ease-in-out;
+}
+
+.content-nav:active{
+    transform: scale(1);
+    transition: all 0.2s ease-in-out;
+}
+
+/* =======================profil===================================== */
+.h3info {
+    font-size: 32px;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.h3subtitle {
+    color: #4A3516;
+    width: 80%;
+    font-size: 18px;
+}
+
+.about-container {
+    margin: 0 auto;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 90%;
+    height: 75%;
+}
+.section-title{
+    font-size: 32px;
+}
+.section-subtitle{
+    color: #4A3516;
+    font-size: 22px;
+}
+
+
+
+.about-inner {
+    /* background-color: #fff; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    pointer-events: none;
+}
+
+.about-inner * {
+    pointer-events: auto;
+}
+
+.developers-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 3rem;
+    margin-top: 2rem;
+    padding: 2rem;
+    border: #A1815B 5px solid;
+    background-color: #D6C687;
+    /* width: 90%;
+    height: 70%; */
+    border-radius: 3rem;
+}
+
+.developer-card {
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.developer-card:hover {
+    transform: translateY(-10px);
+}
+
+.developer-avatar {
+    position: relative;
+    width: 160px;
+    height: 250px;
+    /* vertical frame height to match decorative border */
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.developer-avatar img {
+    /* the member photo sits inside the decorative frame; size it to fit inside the carved area */
+    width: 78%;
+    height: 72%;
+    object-fit: cover;
+    display: block;
+    border-radius: 6px;
+}
+
+.developer-card:hover .developer-avatar img {
+    box-shadow: 0 12px 30px rgba(212, 175, 55, 0.6);
+    transform: scale(1.03);
+}
+
+.avatar-frame {
+    /* use the uploaded decorative border for each developer card */
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("img/borderabout.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    pointer-events: none;
+    opacity: 0.95;
+}
+
+.developer-card:hover .avatar-frame {
+    opacity: 1;
+}
+
+.developer-name {
+    font-size: 1.1rem;
+    color: var(--brown-dark);
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* ====================footer================================ */
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3b2f2b;
+    text-align: center;
+    background-image: linear-gradient(to bottom, #4A3516, #3b2f2b);
+}
+
+.footer-text {
+    font-size: 1.1rem;
+    
+}
+
+.footer-subtext {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.footer {
+    height: 30vh;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.footer-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 18px;
+}
+
+.footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+}
+
+.footer-nav a {
+    opacity: 0.86;
+    font-size: 0.92rem;
+    text-decoration: none;
+    transition: color 0.15s ease, opacity 0.15s ease;
+}
+
+.footer-nav a:hover {
+    opacity: 1;
+}
+
+.footer-logo-wrap {
+    margin: 6px 0 12px;
+}
+
+.footer-logo {
+    width: 160px;
+    height: auto;
+    display: inline-block;
+    filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.6)) saturate(120%);
+}
+
+.footer-copy {
+    color: var(--cream, #f6efe6);
+    opacity: 0.72;
+    font-size: 0.9rem;
+    line-height: 1.45;
+    margin: 8px auto 0;
+    max-width: 900px;
+}
+
+.footer-copy.small {
+    font-size: 0.78rem;
+    opacity: 0.56;
+    margin-top: 8px;
+}
+
+.footer-credit{
+    color: #d4af37;
+}
+
+
+
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    
+    .navcontent {
+        display: none;
+    }
+
+    .s1 {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}

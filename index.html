@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myMemManage - Manajemen Memori Sistem Operasi</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+
+    <!-- Custom font loaded via styles.css @font-face. Pastikan file font berada di folder `fonts/` -->
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <img src="img/logo.png" alt="">
+        </div>
+        <div class="navcontent">
+            <a class="now" href="index.html">home</a>
+            <a href="contiguous.html">contiguous memory</a>
+            <a href="noncontiguous.html">non-contiguous memory</a>
+        </div>
+    </nav>
+    <main class="scroller">
+        <section class="s1">
+            <div class="informasi">
+                <div class="badge">
+                    WELCOME TO
+                </div>
+                <div class="title">
+                    myMemManage
+                </div>
+                <p class="homeDeskripsi">
+                    Mari kita bongkar rahasia di balik alokasi memori! <br>
+                    Mempelajari cara
+                    kerja memory allocation dengan pendekatan
+                    yang asyik dan tidak membosankan
+                </p>
+                <div class="homeButton1">
+                    <button id="start-cta" class="homebutton1">Ayo Mulai</button>
+                    <button id="about-btn" class="homebutton2">Tentang Kami</button>
+                </div>
+            </div>
+            <div class="gambar">
+                <img src="img/banner-illustration.png" alt="banner illustration">
+            </div>
+        </section>
+        <section class="s2">
+            <button class="content-nav prev" id="content-prev" aria-label="Previous page">
+                    <img src="img/ikonnext.png" alt="Previous" class="nav-icon">
+            </button>
+            </div>
+            <div class="h2border" id="h2border">
+                <div class="h2title" id="h2title">
+                    CONTIGUOUS MEMORY ALOCATION
+                </div>
+                <div class="h2deskripsi" id="h2deskripsi">
+                    Salah satu metode manajemen memori paling dasar: setiap proses mendapatkan satu blok memori tunggal yang berkelanjutan. Metode ini sederhana namun rentan fragmentasi dan pemborosan ruang memori.
+                </div>
+                <div class="h2button">
+                    <a class="homebutton1" href="contiguous.html">MULAI BELAJAR</a>
+                    <a class="homebutton2" id="sim-btn" href="contiguous-practice.html">SIMULASI</a>
+                    <a class="homebutton2" id="lat-btn" href="">LATIHAN</a>
+                </div>
+            </div>
+            <button class="content-nav next" id="content-next" aria-label="Next page">
+                    <img src="img/ikonnext.png" alt="Next" class="nav-icon">
+            </button>
+        </section>
+        <section class="about-section">
+        <div class="about-container container">
+            <div class="about-inner">
+                <h2 class="section-title">Tim Pengembang</h2>
+                <p class="section-subtitle">Para ksatria yang membangun website ini</p>
+                <div class="developers-grid">
+                    <div class="developer-card">
+                        <a href="https://youtube.com/clip/UgkxIiQjH1Uf32EOOM_zgAeAtCH2bLeSWOF2?si=AvWr2RPo5oJPWeBA"
+                            class="developer-link" target="_blank" rel="noopener">
+                            <div class="developer-avatar">
+                                <img src="img/member1.png" alt="Developer 1">
+                                <div class="avatar-frame"></div>
+                            </div>
+                        </a>
+                        <h4 class="developer-name">Yusuf Abdurrahman</h4>
+                    </div>
+
+                    <div class="developer-card">
+                        <a href="https://youtube.com/clip/UgkxIiQjH1Uf32EOOM_zgAeAtCH2bLeSWOF2?si=AvWr2RPo5oJPWeBA"
+                            class="developer-link" target="_blank" rel="noopener">
+                            <div class="developer-avatar">
+                                <img src="img/member2.png" alt="Developer 2">
+                                <div class="avatar-frame"></div>
+                            </div>
+                        </a>
+                        <h4 class="developer-name">Muhammad Rifki Yusria Hatta</h4>
+                    </div>
+
+                    <div class="developer-card">
+                        <a href="https://youtube.com/clip/UgkxIiQjH1Uf32EOOM_zgAeAtCH2bLeSWOF2?si=AvWr2RPo5oJPWeBA"
+                            class="developer-link" target="_blank" rel="noopener">
+                            <div class="developer-avatar">
+                                <img src="img/member3.png" alt="Developer 3">
+                                <div class="avatar-frame"></div>
+                            </div>
+                        </a>
+                        <h4 class="developer-name">Fadhel Mochamad Syahrushiam</h4>
+                    </div>
+
+                    <div class="developer-card">
+                        <a href="https://youtube.com/clip/UgkxIiQjH1Uf32EOOM_zgAeAtCH2bLeSWOF2?si=AvWr2RPo5oJPWeBA"
+                            class="developer-link" target="_blank" rel="noopener">
+                            <div class="developer-avatar">
+                                <img src="img/member4.png" alt="Developer 4">
+                                <div class="avatar-frame"></div>
+                            </div>
+                        </a>
+                        <h4 class="developer-name">Yasraf Syifa Maulana</h4>
+                    </div>
+
+                    <div class="developer-card">
+                        <a href="https://youtube.com/clip/UgkxIiQjH1Uf32EOOM_zgAeAtCH2bLeSWOF2?si=AvWr2RPo5oJPWeBA"
+                            class="developer-link" target="_blank" rel="noopener">
+                            <div class="developer-avatar">
+                                <img src="img/member5.png" alt="Developer 5">
+                                <div class="avatar-frame"></div>
+                            </div>
+                        </a>
+                        <h4 class="developer-name">Aditya Ihsan Maulana</h4>
+                    </div>
+
+                    <div class="developer-card">
+                        <a href="https://youtube.com/clip/UgkxIiQjH1Uf32EOOM_zgAeAtCH2bLeSWOF2?si=AvWr2RPo5oJPWeBA"
+                            class="developer-link" target="_blank" rel="noopener">
+                            <div class="developer-avatar">
+                                <img src="img/member6.png" alt="Developer 6">
+                                <div class="avatar-frame"></div>
+                            </div>
+                        </a>
+                        <h4 class="developer-name">Muhammad Ziya Pasya Alghifari</h4>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <section class="footer">
+        <div class="container footer-inner">
+            <p class="footer-credit">Dibuat oleh Mahasiswa Informatika 2025 Universitas Siliwangi</p>
+            <p class="footer-copy small">Copyright © Siliwangi University. All Rights Reserved <br>Tasikmalaya,
+                Indonesia</p>
+        </div>
+    </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Non-Contiguous Memory - myMemManage</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="contiguous.css">
+</head>
+
+<body>
+  <!-- Navbar (sama struktur dengan index) -->
+  <!-- <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-left">
+        <a href="index.html#beranda" class="brand" aria-label="myMemManage">
+          <img src="img/logo.png" alt="myMemManage" class="nav-logo" />
+        </a>
+      </div>
+      <div class="nav-right">
+        <a href="index.html#beranda" class="nav-link">Home</a>
+        <img src="img/staricon.png" alt="" class="nav-sep" aria-hidden="true" />
+        <a href="contiguous.html" class="nav-link">Contiguous</a>
+        <img src="img/staricon.png" alt="" class="nav-sep" aria-hidden="true" />
+        <a href="noncontiguous.html" class="nav-link active">Non-Contiguous</a>
+      </div>
+    </div>
+  </nav> -->
+  <nav>
+        <div class="logo">
+            <img src="img/logo.png" alt="">
+        </div>
+        <div class="navcontent">
+            <a href="index.html">home</a>
+            <a href="contiguous.html">contiguous memory</a>
+            <a class="now" href="noncontiguous.html">non-contiguous memory</a>
+        </div>
+  </nav>
+
+  <main class="contiguous-page">
+    <h1>Non-Contiguous Memory Allocation</h1>
+    <p class="lead">Halaman materi untuk teknik alokasi memori non-contiguous. Di sini dibahas konsep dasar paging,
+      segmentation, dan simulasi page replacement sederhana (FIFO) untuk memperjelas bagaimana frame diisi dan kapan
+      terjadi page fault atau hit.</p>
+
+    <section id="overview" class="panel">
+      <h2>Pengertian Umum</h2>
+      <p class="warna-font">Non-contiguous allocation adalah teknik penyimpanan memori di mana sebuah proses
+        dapat menempati beberapa blok memori fisik yang tidak berurutan. Untuk mengatasi kebutuhan ruang yang
+        berbeda dan mengurangi eksternal fragmentation, sistem membagi memori menjadi unit tetap yang disebut
+        <em>page</em> dan <em>frame</em>. Address translation dilakukan melalui page table yang memetakan page
+        virtual ke frame fisik; ketika sebuah page tidak terdapat di memori fisik dan dibutuhkan, terjadi
+        <strong>page fault</strong> dan sistem harus mengambil page dari penyimpanan sekunder atau melakukan
+        penggantian page.
+      </p>
+    </section>
+
+    <section id="algorithms" class="panel">
+      <h2>Teknik / Jenis Algoritma</h2>
+      <p class="warna-font"><strong>FIFO (First-In, First-Out)</strong>: Mengganti page yang paling lama berada
+        di memori (yang pertama masuk). Implementasinya sederhana tetapi tidak selalu optimal secara statistik.</p>
+      <p class="warna-font"><strong>LRU (Least Recently Used)</strong>: Mengganti page yang paling lama tidak
+        digunakan berdasarkan riwayat penggunaan. LRU mendekati keputusan yang baik apabila riwayat akses mencerminkan
+        pola masa depan.</p>
+      <p class="warna-font"><strong>Optimal</strong>: (Teoritis) Memilih page yang aksesnya paling lama di masa depan;
+        memberikan jumlah page fault paling sedikit untuk sebuah referensi lengkap, tetapi memerlukan pengetahuan
+        tentang referensi mendatang sehingga biasanya dipakai sebagai acuan bukan untuk implementasi nyata.</p>
+    </section>
+
+    <section id="simulation" class="panel">
+      <h2>Simulasi Page Replacement</h2>
+      <div class="panel-body">
+        <div class="panel-sub-body">
+          <div class="panel-sub-sub-body">
+            <div>
+              <label for="sim-frames" class="warna-font">Jumlah Frame</label>
+              <input id="sim-frames" class="warna-materi" type="number" min="1" max="10" value="3"
+                style="width:84px;" />
+            </div>
+            <div>
+              <label for="sim-ref-count" class="warna-font">Jumlah Reference</label>
+              <input id="sim-ref-count" class="warna-materi" type="number" min="1" max="50" value="8"
+                style="width:84px;" />
+            </div>
+            <div>
+              <label for="sim-alg" class="warna-font">Algoritma</label>
+              <select id="sim-alg" class="warna-materi warna-simpilihan" style="width:140px; ">
+                <option value="FIFO">FIFO</option>
+                <option value="LRU">LRU</option>
+                <option value="OPTIMAL">Optimal</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label for="sim-refstr" class="warna-font">Reference</label>
+            <input id="sim-refstr" class="warna-materi" type="text" placeholder="optional: 7,0,1,2,..."
+              style="width:240px;" />
+            <button id="sim-random" class="warna-materi small">Random Reference</button>
+            <button id="sim-generate" class="cta-button">Buat</button>
+          </div>
+        </div>
+
+        <div style="margin-top:12px; display:flex; gap:20px; align-items: center;">
+          <div style="width:100%;">
+            <!-- Scroll wrapper so wide tables show a horizontal scrollbar -->
+            <div class="sim-scroll-wrapper" style="overflow-x:auto; width:100%;">
+              <div id="sim-frames-area" style="min-width:240px;"></div>
+            </div>
+          </div>
+        </div>
+        <div style="min-width:280px;">
+          <div style="display:flex; gap:8px; align-items:center;">
+            <button id="sim-prev" class="cta-button ghost small">Prev</button>
+            <button id="sim-next" class="cta-button ghost small">Next</button>
+            <button id="sim-runall" class="cta-button small">Run All</button>
+          </div>
+          <div id="sim-info" style="margin-top:10px; font-weight:700; color:var(--brown-dark);"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="explanation" class="panel">
+      <h2>Penjelasan</h2>
+      <div id="step-explanation" class="warna-font">
+        <p class="warna-font">Jelaskan hasil simulasi di sini: mengapa terjadi hit atau page fault, dan bagaimana
+          replacement dilakukan
+          menurut strategi FIFO.</p>
+      </div>
+    </section>
+
+    <section class="panel practice-panel">
+      <h2>Ayo Berlatih</h2>
+      <p class="warna-font">Latihan interaktif akan membuat soal berdasarkan jumlah frame dan reference string.
+        Tempatkan reference sesuai urutan; sistem akan memvalidasi pilihan Anda (hit atau replacement sesuai FIFO).</p>
+      <div class="practice-cta" style="margin-top:1rem;">
+        <a class="cta-button" style="text-decoration: none;" href="noncontiguous-practice.html">Ayo Latihan</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="container footer-inner">
+        <p class="footer-credit">Dibuat oleh Mahasiswa Informatika 2025 Universitas Siliwangi</p>
+
+        <p class="footer-copy small">Copyright © Siliwangi University. All Rights Reserved <br>Tasikmalaya, Indonesia
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="noncontiguous.js"></script>
+</body>
+
+</html>

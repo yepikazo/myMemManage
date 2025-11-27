@@ -1,0 +1,497 @@
+/* Styles extracted from contiguous.html to keep markup clean and maintainable */
+.contiguous-page {
+  padding: 56px 24px;
+  color: var(--cream);
+  position: relative;
+  /* animated multi-stop warm gradient (subtle motion) */
+  background: linear-gradient(120deg,
+      #f5e9d0 0%,
+      #f0d9a0 25%,
+      #eac88a 50%,
+      #e8d5b7 75%,
+      #f3e6c7 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 12s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.contiguous-page h1 {
+  color: var(--brown-dark);
+  font-size: 42px;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 8px;
+  /* dark title with bright gold glow similar to index */
+  text-shadow: 0 6px 0 rgba(223, 191, 12, 0.6),
+    0 2px 8px rgba(192, 150, 11, 0.55), 0 0 18px rgba(212, 175, 55, 0.25);
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* decorative stars on both sides of main title (like index section title) */
+.contiguous-page h1::before,
+.contiguous-page h1::after {
+  content: "";
+  display: inline-block;
+  width: 44px;
+  height: 44px;
+  margin: 0 14px;
+  vertical-align: middle;
+  background-image: url("img/staricon.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.95;
+}
+
+.contiguous-page .lead {
+  max-width: 880px;
+  margin: 6px auto 28px;
+  color: var(--brown-medium);
+  text-align: center;
+  padding-top: 2rem;
+}
+
+/* content inner panel to make page look like index */
+
+.contiguous-page .panel {
+  max-width: 85%;
+  margin: 18px auto;
+  /* use the uploaded artwork as the panel frame and stretch it to the panel size so the image itself becomes the container
+     keep the warm gradient as a fallback layer beneath the artwork */
+  /* background-image: url("img/bgmateri.png"),
+    linear-gradient(180deg, rgba(90, 64, 51, 0), rgba(74, 53, 47, 0)); */
+  background-color: #f6efdd;
+  border: #A1815B 5px solid;
+  border-radius: 3rem;
+  /* stretch the artwork to exactly match the panel box so the image visually is the container */
+  background-size: 100% 100%, 100% 100%;
+  background-position: center top, center;
+  background-repeat: no-repeat, no-repeat;
+  /* preserve a small corner radius if the artwork supports rounded corners; if not, image will fill the box */
+  border-radius: 10px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0);
+  /* inset content so it sits within the artwork's framed area using site-wide frame variables */
+  padding: calc(var(--brand-frame-vert) + 18px) calc(var(--brand-frame-horiz) + 19px);
+  color: var(--cream);
+  position: relative;
+  overflow: hidden;
+  padding-left: 7rem;
+  padding-right: 7rem;
+}
+
+.contiguous-page .panel .warna-font {
+  color: #816e62;
+}
+
+.contiguous-page h2 {
+  color: var(--brown-medium);
+  margin-top: 28px;
+  font-weight: 700;
+  /* subtler shadow than main title */
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.45);
+}
+
+/* Highlighting for scanned and allocated rows */
+.alloc-table tbody tr.scanned {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.alloc-table tbody tr.allocated {
+  background: rgba(255, 215, 0, 0.08);
+  font-weight: 600;
+}
+
+.alloc-table tbody tr.waiting-row {
+  font-style: italic;
+  color: var(--cream);
+}
+
+/* Explanation formatting */
+.explain-conclusion {
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+.explain-scans summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* Algorithm selector styling */
+#algo-select {
+  background: linear-gradient(180deg, #3c2b24, #2f231d);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--cream);
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-right: 12px;
+  -webkit-appearance: none;
+  appearance: none;
+  padding-right: 36px;
+  /* room for custom arrow */
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23ffffff' d='M7 10l5 5 5-5z'/></svg>");
+}
+
+#algo-select:focus {
+  outline: 2px solid rgba(255, 215, 0, 0.25);
+}
+
+.controls label {
+  color: var(--cream);
+  font-weight: 700;
+  margin-right: 8px;
+}
+
+.contiguous-page h3 {
+  color: var(--brown-medium);
+}
+
+.contiguous-page p,
+.contiguous-page li {
+  color: #f3e9d6;
+  line-height: 1.6;
+}
+
+.alloc-table {
+  width: 100%;
+  max-width: 920px;
+  margin: 12px auto;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+  /* softer table background that reads lighter than before */
+  background: linear-gradient(180deg,
+      rgba(90, 64, 51, 0.96),
+      rgba(74, 53, 47, 0.96));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+  color: var(--cream);
+}
+
+.alloc-table th,
+.alloc-table td {
+  border: none;
+  padding: 10px 12px;
+  text-align: left;
+}
+
+.alloc-table thead th {
+  background: linear-gradient(180deg,
+      rgba(110, 78, 60, 0.98),
+      rgba(90, 64, 51, 0.98));
+  color: var(--cream);
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.alloc-table tbody tr {
+  border-top: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+/* make table cells stand out with a subtle warm tint */
+.alloc-table td {
+  background: rgba(255, 245, 230, 0.02);
+  color: var(--cream);
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 18px;
+}
+
+/* center the algorithm selector + controls in a nicer panel */
+.controls {
+  background: transparent;
+}
+
+.controls select,
+.controls button {
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+}
+
+.controls button:hover {
+  transform: translateY(-2px);
+}
+
+/* Section title decor similar to index */
+.contiguous-page h2 {
+  position: relative;
+  padding-left: 8px;
+}
+
+.contiguous-page h2::before {
+  content: "";
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  margin-right: 10px;
+  vertical-align: middle;
+  background-image: url("img/staricon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.9;
+}
+
+/* Explanation area formatting inside panel */
+#step-explanation {
+  max-width: 920px;
+  margin: 18px auto 36px;
+  padding: 18px 20px;
+  /* lighter explanation panel */
+  /* moved from inline styles in HTML: keep width, margin, color and line-height here */
+  max-width: 920px;
+  margin: 8px auto;
+  color: var(--cream);
+  line-height: 1.6;
+  /* remove the card background so the panel artwork / overlay shows through */
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0;
+  /* keep spacing minimal; panels already provide padding */
+}
+
+/* small responsive tweak: panels full-width on small screens */
+@media (max-width: 720px) {
+  .contiguous-page .panel {
+    margin: 12px 14px;
+    /* reduce inset on small screens so content fits comfortably inside the artwork */
+    padding: calc(var(--brand-frame-vert) / 2 + 12px) calc(var(--brand-frame-horiz) / 2 + 12px);
+  }
+
+  .alloc-table {
+    max-width: 100%;
+  }
+
+  #step-explanation {
+    margin: 12px 14px 28px;
+    padding: 14px;
+  }
+}
+
+.controls button {
+  padding: 10px 16px;
+  border-radius: 28px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.6px;
+  /* default pill: light backdrop to match reference */
+  background: rgba(255, 255, 255, 0.96);
+  color: #1b1512;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* Make prev/next a consistent minimum width so text aligns */
+.controls button#prev-step,
+.controls button#next-step {
+  min-width: 110px;
+  text-align: center;
+}
+
+/* Gold/run-all style to match reference artwork */
+.controls .gold {
+  background: linear-gradient(180deg, #e3b83a 0%, #c89f2a 100%);
+  color: #2b1f16;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  padding: 10px 20px;
+}
+
+.controls .gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.18);
+}
+
+.step-indicator {
+  color: var(--cream);
+  margin-left: 8px;
+}
+
+.partition-occupant {
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .contiguous-page {
+    padding: 32px 16px;
+  }
+}
+
+/* ---- Overrides: make panel content more readable by using a darker inset ---- */
+/* Use stronger rules here (later in file) so they win over earlier declarations. */
+.contiguous-page .panel::before {
+  background: linear-gradient(180deg,
+      rgba(34, 24, 18, 0.92) 0%,
+      rgba(40, 30, 23, 0.92) 100%) !important;
+}
+
+/* .contiguous-page .panel p,
+.contiguous-page .panel li,
+.contiguous-page .panel .lead,
+.contiguous-page .panel .content-desc,
+.contiguous-page .panel .explain-conclusion,
+.contiguous-page .panel .content-title {
+  color: var(--cream) !important;
+}
+
+.contiguous-page .panel h2,
+.contiguous-page .panel h3 {
+  color: var(--gold) !important;
+} */
+
+.contiguous-page .panel .warna-materi {
+  background-color: rgba(219, 150, 116, 0.5) !important;
+  color: #7a6152 !important;
+  font-weight: 600 !important;
+  /* padding: 0.15rem 0.25rem; */
+  border-radius: 20px;
+  padding: 0.5rem 0.5rem;
+}
+
+/* Step explanation: keep transparent so panel artwork/overlay shows through */
+#step-explanation {
+  background: transparent !important;
+  color: #816e62 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* small action buttons used in panels */
+.table-actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.table-actions .small,
+.controls .small {
+  padding: 8px 12px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #1b1512;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.count-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 8px;
+}
+
+.count-controls input[type="number"] {
+  width: 68px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.count-note {
+  color: #694f2d9a;
+  font-size: 13px;
+  margin-left: 6px;
+}
+
+/* inputs inside the editable tables */
+#processes-tbody input,
+#partitions-tbody input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.96);
+  color: #1b1512;
+}
+
+/* Practice CTA panel styles */
+.practice-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.practice-panel .lead {
+  color: #f3e9d6;
+  margin-bottom: 8px;
+}
+
+.practice-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+.cta-button {
+  margin-top: 1rem;
+  padding: 12px 22px;
+  border-radius: 28px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  background: linear-gradient(180deg, #e3b83a 0%, #c89f2a 100%);
+  color: #2b1f16;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  cursor: pointer;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.18);
+}
+
+
+/* =========================non-contiguous================== */
+
+
+.panel-sub-body {
+  display: flex;
+  margin-top: 1rem;
+  margin-bottom: 0;
+  gap: 40px;
+  align-items: center;
+  flex-wrap: wrap;
+  /* background-color: #e04545; */
+
+}
+
+.panel-sub-sub-body {
+  display: flex;
+  width: auto;
+  gap: 20px;
+  align-items: center;
+
+}
+
+/* animasi */
+

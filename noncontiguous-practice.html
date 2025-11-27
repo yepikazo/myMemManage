@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Latihan Non-Contiguous - myMemManage</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="contiguous.css" />
+  <link rel="stylesheet" href="noncontiguous-practice.css" />
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-left">
+        <a href="index.html#beranda" class="brand" aria-label="myMemManage">
+          <img src="img/logo.png" alt="myMemManage" class="nav-logo" />
+        </a>
+      </div>
+      <div class="nav-right">
+        <a href="index.html#beranda" class="nav-link">Home</a>
+        <img src="img/staricon.png" alt="" class="nav-sep" aria-hidden="true" />
+        <a href="contiguous.html" class="nav-link">Contiguous</a>
+        <img src="img/staricon.png" alt="" class="nav-sep" aria-hidden="true" />
+        <a href="noncontiguous.html" class="nav-link active">Non-Contiguous</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="contiguous-page">
+    <h1>Latihan Non-Contiguous (Page Replacement)</h1>
+    <p class="lead">Latihan interaktif untuk page replacement. Pilih jumlah frame dan jumlah reference string dengan isi acak, lalu tempatkan setiap reference sesuai algoritma.</p>
+
+    <section class="panel" id="practice-generate-panel">
+      <h2>Buat Soal Latihan</h2>
+      <!-- class="panel-body practice-controls" -->
+      <div style="display: flex; margin-top: 1rem; flex-direction: column; gap: 30px;">
+        <div>
+          <label for="nc-gen-frames" class="warna-font">Jumlah Frame</label>
+          <input id="nc-gen-frames" class="warna-materi" type="number" min="1" max="10" value="3" />
+
+          <label for="nc-gen-refcount" class="warna-font" style="margin-left:12px;">Jumlah Reference</label>
+          <input id="nc-gen-refcount" class="warna-materi" type="number" min="1" max="50" value="8" style="width:120px; margin-left:6px;" />
+        </div>
+        <button id="nc-generate"
+          style="display: flex; align-items: center; justify-content: center; width: fit-content;"
+          class="cta-button">Buat Soal</button>
+        <!-- <button id="nc-reset" class="cta-button ghost">Reset</button -->
+        <div id="nc-gen-summary" class="warna-font" style="margin-top:12px; font-weight:700;"></div>
+      </div>
+    </section>
+
+    <section class="panel" id="practice-solve-panel">
+      <h2>Kerjakan Latihan</h2>
+      <div class="panel-body">
+        <div style="display:flex;margin: 1rem 0; gap:24px; flex-wrap:wrap;">
+          <div style="flex:1; min-width:320px;">
+            <h4 class="warna-font">Frames / Langkah (klik sel untuk memilih frame)</h4>
+            <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;">
+              <button id="nc-mark-hit" class="cta-button ghost">Tandai Hit</button>
+              <div class="warna-font" id="nc-step-indicator">Step: 0 / 0</div>
+            </div>
+            <div style="overflow:auto; max-width:100%;">
+              <table class="alloc-table" id="nc-frames-table" style="min-width:480px;">
+                <thead id="nc-frames-thead"></thead>
+                <tbody id="nc-frames-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+        <div style="width:360px;">
+          <div id="nc-message" class="warna-font" style="margin-top:12px; color:var(--brown-dark); font-weight:700;">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="container footer-inner">
+        <p class="footer-credit">Dibuat oleh Mahasiswa Informatika 2025 Universitas Siliwangi</p>
+  
+        <p class="footer-copy small">Copyright © Siliwangi University. All Rights Reserved <br>Tasikmalaya,
+          Indonesia</p>
+      </div>
+    </div>
+  </footer>
+  
+
+  <script src="script.js"></script>
+  <script src="noncontiguous-practice.js"></script>
+</body>
+
+</html>
