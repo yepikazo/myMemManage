@@ -234,6 +234,8 @@ developerCards.forEach((card) => {
       const p = pages[currentIndex];
       if (p && p.id === "contiguous") {
         window.location.href = "contiguous.html#visualization";
+      } else{
+        window.location.href = "noncontiguous.html#visualization";
       }
       // otherwise do nothing (button is disabled via showPage)
     });
@@ -244,6 +246,9 @@ developerCards.forEach((card) => {
       const p = pages[currentIndex];
       if (p && p.id === "contiguous") {
         window.location.href = "contiguous-practice.html";
+      } else{
+        window.location.href = "noncontiguous-practice.html";
+
       }
     });
 
