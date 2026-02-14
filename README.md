@@ -1,2 +1,2 @@
 # myMemManage
-projek kelompok uas
+projek kelompok uas Sistem Operasi
